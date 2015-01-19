@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ThinkTel.uControl.Cdrs</id>
+    <version>1.0.0</version>
+    <authors>Paul Vaillant</authors>
+	<language>en-us</language>
+    <licenseUrl>https://raw.githubusercontent.com/thinktel/ThinkTel.uControl.Cdrs/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/thinktel/ThinkTel.uControl.Cdrs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A library to access Call Detail Records from ThinkTel's uControl management portal. Requires .Net 4.5+</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2013 ThinkTel Communications</copyright>
+    <tags>ThinkTel uControl CDR</tags>
+  </metadata>
+  <files>
+	<file src="ThinkTel.uControl.Cdrs\bin\release\ThinkTel.uControl.Cdrs.dll" target="lib\net45" />
+  </files>
+</package>
