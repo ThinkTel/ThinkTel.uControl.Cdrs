@@ -32,5 +32,31 @@ namespace ThinkTel.uControl.Cdrs
 		{
 			return string.Format("{0:yyyy-MM-dd HH:mm} {1,-15} to {2,-15} for {3,5}s {4:c}", Dated, SourceNumber, DestinationNumber, RoundedDuration, BilledAmount);
 		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj is Cdr)
+			{
+				var other = (Cdr)obj;
+				return string.Equals(CdrFile, other.CdrFile) && LineNumber == other.LineNumber && BillingNumber == other.BillingNumber &&
+					SourceNumber == other.SourceNumber && DestinationNumber == other.DestinationNumber && Dated == other.Dated &&
+					RoundedDuration == other.RoundedDuration && UsageType == other.UsageType && BilledAmount == other.BilledAmount &&
+					SourceLocation == other.SourceLocation && DestinationLocation == other.DestinationLocation && Rate == other.Rate;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			return string.Join("-", new object[] { 
+				CdrFile, LineNumber, BillingNumber, 
+				SourceNumber, DestinationNumber, Dated, 
+				RoundedDuration, UsageType, BilledAmount, 
+				SourceLocation, DestinationLocation, Rate
+			}).GetHashCode();
+		}
 	}
 }

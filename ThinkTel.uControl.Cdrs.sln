@@ -11,6 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkTel.uControl.Cdrs.Tests", "ThinkTel.uControl.Cdrs.Tests\ThinkTel.uControl.Cdrs.Tests.csproj", "{D39B3312-C182-4739-954D-B8B78B946C27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{78825023-4CD8-4617-B98A-9E2DF9139C1F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{284671A9-C819-4787-A918-399B98A678DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{284671A9-C819-4787-A918-399B98A678DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{284671A9-C819-4787-A918-399B98A678DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39B3312-C182-4739-954D-B8B78B946C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39B3312-C182-4739-954D-B8B78B946C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39B3312-C182-4739-954D-B8B78B946C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39B3312-C182-4739-954D-B8B78B946C27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

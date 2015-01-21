@@ -10,17 +10,17 @@ namespace ThinkTel.uControl.Cdrs
 {
     public class CdrClient : ICdrClient
     {
-		private Uri _uri;
-		private NetworkCredential _credentials;
+		protected Uri uri;
+		protected NetworkCredential Credentials;
 
 		public CdrClient(string uri) : this(new Uri(uri)) { }
 		public CdrClient(Uri uri)
 		{
-			_uri = uri;
-			if (!string.IsNullOrEmpty(_uri.UserInfo))
+			this.uri = uri;
+			if (!string.IsNullOrEmpty(uri.UserInfo))
 			{
-				var array = _uri.UserInfo.Split(':');
-				_credentials = new NetworkCredential(array[0], array[1]);
+				var array = uri.UserInfo.Split(':');
+				Credentials = new NetworkCredential(array[0], array[1]);
 			}
 		}
 
@@ -115,9 +115,9 @@ namespace ThinkTel.uControl.Cdrs
 			return cdrs.ToArray();
 		}
 
-		private async Task<string> FtpGetAsync(string path)
+		protected virtual async Task<string> FtpGetAsync(string path)
 		{
-			var ftpUrl = "ftp://" + _uri.Host + "/" + (path ?? ""); // %2f/";
+			var ftpUrl = "ftp://" + uri.Host + "/" + (path ?? ""); // %2f/";
 			var req = (FtpWebRequest)FtpWebRequest.Create(ftpUrl);
 			if (ftpUrl.EndsWith("/"))
 				req.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
@@ -126,7 +126,7 @@ namespace ThinkTel.uControl.Cdrs
 			req.KeepAlive = false;
 			req.UsePassive = true;
 			req.UseBinary = false; // maybe true for files?
-			req.Credentials = _credentials;
+			req.Credentials = Credentials;
 
 			using (var resp = await req.GetResponseAsync())
 			{
