@@ -3,4 +3,4 @@
 
 - [ThinkTel Homepage](http://thinktel.ca)
 - [NuGet Package](https://www.nuget.org/packages/ThinkTel.uControl.Cdrs)
-- [License](LICENSE.md)
+- [License](LICENSE.txt)
