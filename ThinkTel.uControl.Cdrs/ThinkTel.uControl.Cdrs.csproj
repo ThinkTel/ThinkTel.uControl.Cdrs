@@ -43,7 +43,6 @@
     <Compile Include="CdrClient.cs" />
     <Compile Include="CdrFile.cs" />
     <Compile Include="CdrUsageType.cs" />
-    <Compile Include="CsvExtensions.cs" />
     <Compile Include="ICdrClient.cs" />
     <Compile Include="InvalidCdrException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
