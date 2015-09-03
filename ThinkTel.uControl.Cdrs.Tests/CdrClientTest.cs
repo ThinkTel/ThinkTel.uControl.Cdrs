@@ -55,7 +55,8 @@ namespace ThinkTel.uControl.Cdrs.Tests
 				MakeCdr(17005551111L, 17005551100, CdrUsageType.onnet),
 				MakeCdr(17004442222, 18552003333, CdrUsageType.tfin),
 				MakeCdr(17005551111L, 17008889999, CdrUsageType.usa),
-			};
+                MakeCdr(17005551111L, 17008889999, CdrUsageType.usa, 5)
+            };
 
 			var actual = await cdr.GetCdrFileAsync(TEST_FILE);
 
@@ -77,13 +78,18 @@ namespace ThinkTel.uControl.Cdrs.Tests
 		};
 		private static string INTERNATIONAL = "London, UK";
 
-		private static Cdr MakeCdr(long srcNum, long dstNum, CdrUsageType type)
+		private static Cdr MakeCdr(long srcNum, long dstNum, CdrUsageType type, int? blankDuration = null)
 		{
 			var date = new DateTime(2014,5,18,20+(lineCnt >= 7 ? 1 : 0), lineCnt-1, ((lineCnt-1) * 10) % 60, DateTimeKind.Utc);
 			date = date.AddHours(6).ToLocalTime();
-			var dur = (lineCnt - 1) * 10 + 1;
-			var rate = (lineCnt - 1) * 0.015m;
-			if (rate > 0.1m) rate = 0;
+
+            var dur = (lineCnt - 1) * 10 + 1;
+            if (blankDuration.HasValue)
+                dur = blankDuration.Value;
+
+            var rate = (lineCnt - 1) * 0.015m;
+			if (rate > 0.1m || blankDuration.HasValue)
+                rate = 0;
 
 			return new Cdr
 			{

@@ -87,7 +87,14 @@ namespace ThinkTel.uControl.Cdrs
 				var row = SPLIT_CSV_LINE.Matches(line).Cast<Match>().Select(x => x.Groups["m"].Value).ToArray();
 				try
 				{
-					cdrs.Add(new Cdr
+                    int duration;
+                    if (string.IsNullOrEmpty(row[4]) && string.IsNullOrEmpty(row[6]))
+                        // row[11] is the raw duration (float)
+                        duration = (int)(string.IsNullOrEmpty(row[11]) ? 0 : decimal.Parse(row[11]));
+                    else
+                        duration = (string.IsNullOrEmpty(row[4]) ? 0 : int.Parse(row[4]));
+
+                    cdrs.Add(new Cdr
 					{
 						CdrFile = cdrFile,
 						LineNumber = lineNum,
@@ -96,14 +103,15 @@ namespace ThinkTel.uControl.Cdrs
 						SourceNumber = (string.IsNullOrEmpty(row[1]) ? 0 : long.Parse(row[1])),
 						DestinationNumber = long.Parse(row[2]),
 						Dated = DateTime.Parse(row[3]),
-						RoundedDuration = int.Parse(row[4]),
+						RoundedDuration = duration,
 						UsageType = (CdrUsageType)Enum.Parse(typeof(CdrUsageType), row[5]),
-						BilledAmount = decimal.Parse(row[6]),
+						BilledAmount = (string.IsNullOrEmpty(row[6]) ? 0 : decimal.Parse(row[6])),
 						SourceLocation = row[7],
 						DestinationLocation = row[8],
-						Rate = decimal.Parse(row[9])
-						// row[10] is label and row[11] is raw duration (float)
-					});
+						Rate = (string.IsNullOrEmpty(row[9]) ? 0 : decimal.Parse(row[9]))
+						// row[10] is label
+                        // row[12] is subscription, row[13] is call type, row[14] is carrier, row[15] is alt destination name, row[16] is additional label
+                    });
 				}
 				catch (Exception e)
 				{

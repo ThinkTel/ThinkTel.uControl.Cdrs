@@ -37,9 +37,10 @@ drwxrwxrwx   1 owner    group               0 Nov  1  2014 Stats".Trim();
 7805551212,17005551111,17005552222,2014-05-18 21:07:10-06,71,local,0,""Edmonton, AB"",""Edmonton, AB"",0,""Test Trunk"",5.2
 5875553434,17005551111,17005551100,2014-05-18 21:08:20-06,81,onnet,0.00,""Edmonton, AB"",""Edmonton, AB"",0.0,""Test Trunk 2"",798.3
 7805551212,17004442222,18552003333,2014-05-18 21:09:30-06,91,tfin,0,""Calgary, AB"",""Toll Free"",0.00,""Test Trunk"",6.5
-5875553434,17005551111,17008889999,2014-05-18 21:10:40-06,101,usa,0,""Edmonton, AB"",""New York, NY"",0,""Test Trunk 2"",5.7";
-			}
-			else
+5875553434,17005551111,17008889999,2014-05-18 21:10:40-06,101,usa,0,""Edmonton, AB"",""New York, NY"",0,""Test Trunk 2"",5.7
+7805551212,17005551111,17008889999,2014-05-18 21:11:50-06,,usa,,""Edmonton, AB"",""New York, NY"",,""Test Trunk"",5.7";
+            }
+            else
 			{
 				throw new NotImplementedException("Unknown FTP path " + path);
 			}
